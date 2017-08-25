@@ -1,0 +1,103 @@
+﻿//参考资料：《Pro Git (by Scott Chacon)》
+
+1.查询配置信息: git config --list
+
+2.直接查阅某个环境变量的设定，直接把查询内容跟你在后面即可。
+  例如, git config user.name
+
+3.想了解Git的各种工具的用法，可以使用下列命令之一。
+  a) git help <verb>       例如: git help config
+  b) git <verb> --help     例如: git config --help
+
+4.要对现有的某个项目开始Git管理，只需要到此项目所在的目录下，
+  执行: git init
+
+5.先用git add命令对文件进行跟踪，然后用git commit命令进行提交。
+  例如: git add *.cpp
+        git commit -m 'Initial project version'
+
+6.检查当前文件的状态: git status
+
+7.创建文件: touch <filename>
+  例如: touch .gitignore
+
+8.会把文件内容打印到屏幕: cat <filename>
+  例如，cat .gitignore
+
+9.文件.gitignore 的格式规范
+  a) 所有空格或者以注释符'#'开头的行都会被Git忽略
+  b) 可以使用标准的glob模式匹配
+  c) 匹配模式最后跟反斜杠('/')说明要忽略的是目录
+  d) 要忽略指定文件以外的文件或目录，可以在模式前加上'!'取反。 如： !a.exe
+
+10.比较工作目录中当前文件和暂存区域快照的差异： git diff
+
+11.比较暂存文件(added)和上次提交(committed)的快照之间的差异:
+   a) git diff --cached
+   b) git diff --staged (Git1.6.1及更高版本)
+
+12.自定义编辑器： git config --global core.editor <yourEditor>
+
+13.git commit命令可以用-v选项将修改差异的每一行都包含在注释中
+
+14.git commit命令可以用-a选项跳过使用暂存区域,自动暂存已跟踪的文件并提交。
+
+15.删除工作目录中指定文件，并在暂存区中移除: git rm <file>
+
+16.移除跟踪但不删除文件: git rm --cached <file>
+
+17.对<oldFileName>改名为<newFileName>:  git mv <oldFileName> <newFileName>
+
+18.从<url>克隆仓库到当前目录: git clone <url>
+
+19. 查看提交历史: git log
+    a) 默认无参数，列出所有的更新，最近的更新在最上面: 
+    b) 参数 -p 展开显示每次提交内容的差异
+    c) 参数 -<num> 显示最近<num>次更新
+    d) 参数 --stat 仅显示简要的增改行数统计
+    e) 显示某个指定作者的更新：git log --author '<authorName>'
+       例如：git log --author 'Yunxing Zhang'
+
+20.修改最后一次提交: git commit --amend
+   a)如果执行此命令前暂存区域有新的改动，则将更新上次的提交。
+   b)执行此命令后，可以修改上次提交时的说明。
+
+21.取消暂存的文件: git reset HEAD <file>
+   例如： git reset HEAD test.txt
+
+22.撤销某文件修改（未提交），回到之前的状态：git checkout -- <file>
+  例如： git checkout -- gitLearn.txt
+
+23.查看当前配置的远程仓库: git remote
+   可以加上 -v(或者--vorbose) 获取其地址
+
+24.添加一个远程仓库，并为之取别名:  git remote add <shortName> <url>
+
+25.修改远程仓库的别名: git remote rename <old-name> <new-name>
+
+26.从远程仓库抓取数据到本地: git fetch <remote-name>
+   [注] fetch命令知识将远程的数据拉倒本地仓库，并不自动合并到当前工作分支。
+
+27.将本地仓库中的数据推送到远程仓库: git push <remote-name> <branch-name>
+
+28.查看某个远程仓库的详细信息: git remote show <remote-name>
+
+29.移除某个远端仓库: git remote rm <remote-name>
+
+30.在当前的commit对象新建一个分支指针： git branch <new-branch-name>
+   例如：git branch newBranch
+
+31.查询分支情况: git branch
+
+32.删除没用的本地分支: git branch -d <branch-name>
+   例如： git branch -d branchName
+
+33.删除远程分支: git push <remote-name> :<branch-name>
+   例如：git push origin :branchName
+
+34.查看尚未合并的其他分支: git branch --no-merged 
+  
+35.切换到其他的分支： git checkout <new-branch-name>
+ 
+36.新建分支，并且切换到新分支：git checkout -b <new-branch-name>
+    例如：git checkout -b newBranch
